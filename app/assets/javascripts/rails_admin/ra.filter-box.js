@@ -84,9 +84,6 @@
             .prop('name', multiple_values ? undefined : value_name)
             .data('name', value_name)
             .append('<option value="_discard">...</option>')
-            .append($('<option value="_present"></option>').prop('selected', field_value == "_present").text(RailsAdmin.I18n.t("is_present")))
-            .append($('<option value="_blank"></option>').prop('selected', field_value == "_blank").text(RailsAdmin.I18n.t("is_blank")))
-            .append('<option disabled="disabled">---------</option>')
             .append(select_options)
             .add(
               $('<select multiple="multiple" class="select-multiple input-sm form-control"></select>')

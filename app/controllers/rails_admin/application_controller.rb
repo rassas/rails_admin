@@ -17,6 +17,8 @@ module RailsAdmin
     before_action :_authorize!
     before_action :_audit!
 
+    around_action :set_en_locale
+
     helper_method :_current_user, :_get_plugin_name
 
     attr_reader :object, :model_config, :abstract_model, :authorization_adapter
@@ -38,6 +40,14 @@ module RailsAdmin
 
     def _current_user
       instance_eval(&RailsAdmin::Config.current_user_method)
+    end
+    
+
+    def set_en_locale
+      locale = I18n.locale
+      I18n.locale = :en
+      yield
+      I18n.locale = locale
     end
 
   private
